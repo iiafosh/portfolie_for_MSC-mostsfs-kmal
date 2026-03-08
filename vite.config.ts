@@ -6,7 +6,7 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '', // Empty string is the most compatible for Vite 5+ relative paths
+    base: process.env.NODE_ENV === 'production' ? '/portfolie_for_MSC-mostsfs-kmal/' : '/', // Conditional base for GitHub Pages
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
