@@ -29,12 +29,8 @@ jobs:
           touch dist/.nojekyll
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} # You must add this to your GitHub Repo Secrets!
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: './dist'
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: dist
+          branch: gh-pages # The branch the action should deploy to.
